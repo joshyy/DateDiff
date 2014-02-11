@@ -46,13 +46,13 @@ public class DateDiff {
 		if (args.Length == 1) {
 			int i = 0;
 			int.TryParse(args[0], out i);
-			DateDiff(i);
+			new DateDiff(i);
 		} else if (args.Length == 2) {
 			int i = 0;
 			int.TryParse(args[1], out i);			
 			DateTime td = DateTime.Today;
 			DateTime.TryParse(args[0], out td);
-			DateDiff(td, i);
+			new DateDiff(td, i);
 		} else {
 			Console.WriteLine("Usage: DateDiff 80");
 			Console.WriteLine("or Usage: DateDiff yyyy-mm-dd 80");
