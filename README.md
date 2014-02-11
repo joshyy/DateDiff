@@ -9,7 +9,7 @@ The MIT License (MIT)
 
 Compile
 =======
-csc DateDiff.cs
+csc DateDiff.cs or with Mono: gmcs DateDiff.cs
 
 Usage
 ========
