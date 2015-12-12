@@ -39,7 +39,8 @@ public class DateDiff {
 	
 	/// DateDiff 2014-01-01 2014-03-01 -- returns the number of days between the dates
 	public DateDiff(DateTime a, DateTime b) {
-		Console.WriteLine("Not implemented yet.");
+		TimeSpan span = b - a;
+		Console.WriteLine(span.Days);
 	}
 	
 	public static void Main(string[] args) {
@@ -47,12 +48,24 @@ public class DateDiff {
 			int i = 0;
 			int.TryParse(args[0], out i);
 			new DateDiff(i);
-		} else if (args.Length == 2) {
-			int i = 0;
-			int.TryParse(args[1], out i);			
-			DateTime td = DateTime.Today;
-			DateTime.TryParse(args[0], out td);
-			new DateDiff(td, i);
+		} else if (args.Length == 2) {				
+			// first arg must be a date
+			DateTime dt0 = DateTime.MinValue;
+			DateTime.TryParse(args[0], out dt0);
+			
+			// second arg may be int or date
+			DateTime dt1 = DateTime.MinValue;	
+			DateTime.TryParse(args[1], out dt1);
+			
+			if (dt1 > DateTime.MinValue) {
+				// calculate the difference between the given days
+				new DateDiff(dt0, dt1);
+			} else {
+				// calculate the number of days +- the date given
+				int i = 0;	
+				int.TryParse(args[1], out i);
+				new DateDiff(dt0, i);
+			}
 		} else {
 			Console.WriteLine("Usage: DateDiff 80");
 			Console.WriteLine("or Usage: DateDiff yyyy-mm-dd 80");
